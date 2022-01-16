@@ -8,27 +8,64 @@ const routes = [
     path: '/',
     name: 'Home',
     component: DefaultLayout,
-    redirect: '/task-template',
+    redirect: '/personal-work/task-template',
     children: [
       {
-        path: '/task',
+        path: '/unit-work',
+        name: 'Công việc đơn vị',
+        component: {
+          render() {
+            return h(resolveComponent('router-view'))
+          },
+        },
+        redirect: '/unit-work/dashboard',
+        children: [
+          {
+            path: '/unit-work/dashboard',
+            name: 'Dashboard công việc đơn vị',
+            component: () => import('@/views/base/Cards.vue'),
+          },
+          {
+            path: '/unit-work/worklist',
+            name: 'Danh sách công việc đơn vị',
+            component: () => import('@/views/base/Carousels.vue'),
+          },
+        ],
+      },
+      {
+        path: '/personal-work',
         name: 'Công việc cá nhân',
         component: {
           render() {
             return h(resolveComponent('router-view'))
           },
         },
-        redirect: '/task-template',
+        redirect: '/personal-work/task-template',
         children: [
           {
-            path: '/task-template',
+            path: '/personal-work/dashboard',
+            name: 'Dashboard công việc cá nhân',
+            component: () => import('@/views/base/Collapses.vue'),
+          },
+          {
+            path: '/personal-work/worklist',
+            name: 'Danh sách công việc cá nhân',
+            component: () => import('@/views/base/ListGroups.vue'),
+          },
+          {
+            path: '/personal-work/task-template',
             name: 'Mẫu công việc',
             component: () => import('@/views/base/TaskTemplate.vue'),
           },
           {
-            path: '/task-process-template',
+            path: '/personal-work/task-process-template',
             name: 'Mẫu quy trình',
             component: () => import('@/views/base/TaskProcessTemplate.vue'),
+          },
+          {
+            path: '/personal-work/task-list',
+            name: 'Danh sách quy trình',
+            component: () => import('@/views/base/Navs.vue'),
           },
         ],
       },

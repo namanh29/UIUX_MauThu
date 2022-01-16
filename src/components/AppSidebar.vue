@@ -12,7 +12,7 @@
     "
   >
     <CSidebarBrand>
-      <CIcon
+      <!-- <CIcon
         custom-class-name="sidebar-brand-full"
         :icon="logoNegative"
         :height="35"
@@ -21,7 +21,8 @@
         custom-class-name="sidebar-brand-narrow"
         :icon="sygnet"
         :height="35"
-      />
+      /> -->
+      <span style="font-weight: bold; font-size: 25px">DxClan</span>
     </CSidebarBrand>
     <AppSidebarNav />
     <CSidebarToggler
